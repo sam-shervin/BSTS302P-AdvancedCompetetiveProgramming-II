@@ -1,4 +1,4 @@
-package celebrity;
+package stacks;
 
 /*
     Problem Statement:
@@ -54,6 +54,11 @@ public class CelebrityProblem {
                 { 0, 0, 1, 0 }
         };
         CelebrityProblem a = new CelebrityProblem();
-        System.out.println("Person " + a.findCelebrity(matrix, matrix.length) + " is the candidate");
+        int val = a.findCelebrity(matrix, matrix.length);
+        if (val!=-1){
+        System.out.println("Person " + val + " is the candidate");
+    } else {
+        System.out.println("No candidate in the party");
+    }
     }
 }
