@@ -5,7 +5,7 @@ package stacks;
     ------------------
     The Stock Span Problem:
       Given an array `prices[]` of daily stock prices of size N,
-      the “span” S[i] of the stock’s price on day i is the maximum number
+      the "span" S[i] of the stock's price on day i is the maximum number
       of consecutive days up to and including day i, for which the price
       on those days was ≤ prices[i].
 
