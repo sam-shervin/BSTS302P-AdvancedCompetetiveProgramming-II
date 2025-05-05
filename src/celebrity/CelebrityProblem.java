@@ -1,56 +1,59 @@
 package celebrity;
 
+/*
+    Problem Statement:
+    You are given a number n, representing the number of people in a party.
+    A celebrity is defined as someone who knows no one else, but everyone else knows them.
+    Given an n×n matrix 'mat' where mat[i][j] == 1 means person i knows person j,
+    write a function to find the index of the celebrity. If there is no celebrity, return -1.
+    
+    Constraints:
+    - 2 ≤ n  
+    - mat[i][i] = 0 for all i  
+    - You may assume at most one celebrity exists.
+    
+    Methods:
+      - celebritySolution(int[][] mat): returns the celebrity index or -1 if none.
+*/
+
 public class CelebrityProblem {
 
     // Function to check if a person knows another person
-    static boolean knows(int[][] matrix, int a, int b) {
+    private boolean knows(int[][] matrix, int a, int b) {
         return matrix[a][b] == 1;
     }
 
     // Function to find the celebrity
-    static int findCelebrity(int[][] matrix, int n) {
-        int candidate = 0;
+    int findCelebrity(int[][] matrix, int n) {
+        if (n <= 0)
+            return -1;
 
-        // Step 1: Find the candidate
+        int candidate = 0;
         for (int i = 1; i < n; i++) {
             if (knows(matrix, candidate, i)) {
                 candidate = i;
             }
         }
-
-        // Step 2: Verify the candidate
         for (int i = 0; i < n; i++) {
-            if (i != candidate && (knows(matrix, candidate, i) || !knows(matrix, i, candidate))) {
+            if (i != candidate && knows(matrix, candidate, i))
                 return -1;
-            }
         }
-
+        for (int i = 0; i < n; i++) {
+            if (i != candidate && !knows(matrix, i, candidate))
+                return -1;
+        }
         return candidate;
+
     }
 
     public static void main(String[] args) {
         int[][] matrix = {
-            {0, 1, 1, 0},
-            {0, 0, 1, 0},
-            {0, 0, 0, 0},
-            {0, 0, 1, 0}
+                { 0, 1, 1, 0 },
+                { 0, 0, 1, 0 },
+                { 0, 0, 0, 0 },
+                { 0, 0, 1, 0 }
         };
-        int n = matrix.length;
-        int result = findCelebrity(matrix, n);
-        if (result == -1) {
-            System.out.println("No celebrity found.");
-        } else {
-            System.out.println("Celebrity is person " + result);
-        }
-    }
-
-    static int myalgo(int[][] matrix){
-        int celeb = 0;
-        for (int i = 0; i < matrix.length; i++){
-            if (matrix[celeb][i] == 1){
-                celeb = i;
-            }
-        }
-        return celeb;
+        CelebrityProblem a = new CelebrityProblem();
+        System.out.println("Person " + a.findCelebrity(matrix, matrix.length) + " is the candidate");
     }
 }
