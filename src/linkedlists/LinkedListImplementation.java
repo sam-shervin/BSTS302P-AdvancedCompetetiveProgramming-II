@@ -35,7 +35,7 @@ class LinkedList {
             System.out.print(temp.data + " -> ");
             temp = temp.next;
         }
-        System.out.print("\b\b\b  ");
+        System.out.print("\b\b\b   ");
         System.out.println("");
     }
 }
