@@ -35,7 +35,7 @@ public class StockSpan {
     public static void main(String[] args) {
         StockSpan solution = new StockSpan();
 
-        int[] stock = { 97, 64, 32, 11, 22, 56 };
+        int[] stock = { 97, 64, 32, 11, 22, 56};
         int len = stock.length;
         int[] span = solution.calculate(stock, len);
         System.out.print("Stock span is: {");
